@@ -1,7 +1,7 @@
 /*
 Assignment 1
 lab - OOPL
-Problem Statement = Implement a BAnking System
+Problem Statement = Implement a Banking System
 */
 
 #include <iostream>
@@ -30,8 +30,7 @@ public:
     isActive = false;
   }
 
-  // Function to dynamically initialize/create an account
-  void createAccount(string name, long long accNum, double initialBalance, string accType)
+  void createAccount(string name, long accNum, double initialBalance, string accType)
   {
     depositorName = name;
     accountNumber = accNum;
@@ -125,16 +124,20 @@ public:
     }
   }
 
-  // Getters
-  long long getAccountNumber() const { return accountNumber; }
-  bool getIsActive() const { return isActive; }
+  long getAccountNumber()
+  {
+    return accountNumber;
+  }
+  bool getIsActive()
+  {
+    return isActive;
+  }
 
   // Destructor
   ~BankAccount() {}
 };
 
-// Search helper function
-int findAccount(const BankAccount bank[], int totalCount, long long targetAcc)
+int findAccount(BankAccount bank[], int totalCount, long targetAcc)
 {
   for (int i = 0; i < totalCount; i++)
   {
@@ -149,15 +152,12 @@ int findAccount(const BankAccount bank[], int totalCount, long long targetAcc)
 int main()
 {
   const int MAX_ACCOUNTS = 10;
-  BankAccount bank[MAX_ACCOUNTS]; // Array of 10 objects
+  BankAccount bank[MAX_ACCOUNTS];
   int accountCount = 0;
 
   int choice;
-  long long targetAcc;
+  long targetAcc;
   double amount;
-  cout << "\n\n=============================================\n";
-  cout << "       BANK ACCOUNT MANAGEMENT SYSTEM        \n";
-  cout << "=============================================\n\n\n";
 
   do
   {
@@ -184,7 +184,7 @@ int main()
       else
       {
         string name, type;
-        long long accNum;
+        long accNum;
         double initBal;
 
         cin.ignore();
