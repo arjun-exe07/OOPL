@@ -117,11 +117,11 @@ int main()
     {
       if (count >= 100)
       {
-        cout << "=> System Limit Reached! Cannot add more employees.\n";
+        cout << "Limit Reached! Cannot add more employees.\n";
         continue;
       }
 
-      string name, contact, extra1, extra2;
+      string name, contact, spec, dep, design, shift;
       int age, exp;
 
       if (choice == 1)
@@ -134,10 +134,11 @@ int main()
         cout << "Enter Contact No: ";
         getline(cin, contact);
         cout << "Enter Specialization: ";
-        getline(cin, extra1);
+        getline(cin, spec);
         cout << "Enter Experience (in years): ";
         cin >> exp;
-        staff[count++] = new Doctor(name, age, contact, extra1, exp);
+
+        staff[count++] = new Doctor(name, age, contact, spec, exp);
       }
       else if (choice == 2)
       {
@@ -149,10 +150,11 @@ int main()
         cout << "Enter Contact No: ";
         getline(cin, contact);
         cout << "Enter Department: ";
-        getline(cin, extra1);
+        getline(cin, dep);
         cout << "Enter Shift (Day/Night): ";
-        getline(cin, extra2);
-        staff[count++] = new Nurse(name, age, contact, extra1, extra2);
+        getline(cin, shift);
+
+        staff[count++] = new Nurse(name, age, contact, dep, shift);
       }
       else if (choice == 3)
       {
@@ -164,10 +166,11 @@ int main()
         cout << "Enter Contact No: ";
         getline(cin, contact);
         cout << "Enter Designation: ";
-        getline(cin, extra1);
+        getline(cin, design);
         cout << "Enter Department: ";
-        getline(cin, extra2);
-        staff[count++] = new Admin(name, age, contact, extra1, extra2);
+        getline(cin, dep);
+
+        staff[count++] = new Admin(name, age, contact, design, dep);
       }
       cout << "=> Employee Added Successfully!\n";
     }
@@ -191,8 +194,7 @@ int main()
     }
   } while (choice != 5);
 
-  // Clean up dynamically allocated memory before exiting
-  for (int i = 0; i < count; i++)
+    for (int i = 0; i < count; i++)
   {
     delete staff[i];
   }
